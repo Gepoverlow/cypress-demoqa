@@ -27,7 +27,7 @@ describe('fill and test form submission styles', () => {
         cy.assertShouldHaveRedColor(redColorElements)
         cy.assertShouldHaveGreenColor(greenColorElements)
 
-        cy.assertModalIsNotVisible()
+        cy.assertModalDoesNotExist()
 
     })
 
@@ -47,7 +47,7 @@ describe('fill and test form submission styles', () => {
         cy.assertShouldHaveRedColor(redColorElements)
         cy.assertShouldHaveGreenColor(greenColorElements)
 
-        cy.assertModalIsNotVisible()
+        cy.assertModalDoesNotExist()
 
     })
 
@@ -67,7 +67,7 @@ describe('fill and test form submission styles', () => {
         cy.assertShouldHaveRedColor(redColorElements)
         cy.assertShouldHaveGreenColor(greenColorElements)
 
-        cy.assertModalIsNotVisible()
+        cy.assertModalDoesNotExist()
 
 
 
@@ -89,7 +89,7 @@ describe('fill and test form submission styles', () => {
         cy.assertShouldHaveRedColor(redColorElements)
         cy.assertShouldHaveGreenColor(greenColorElements)
 
-        cy.assertModalIsNotVisible()
+        cy.assertModalDoesNotExist()
 
     })
 
@@ -109,7 +109,7 @@ describe('fill and test form submission styles', () => {
         cy.assertShouldHaveRedColor(redColorElements)
         cy.assertShouldHaveGreenColor(greenColorElements)
 
-        cy.assertModalIsNotVisible()
+        cy.assertModalDoesNotExist()
 
     })
 
@@ -127,7 +127,7 @@ describe('fill and test form submission styles', () => {
 
         cy.assertShouldHaveGreenColor(greenColorElements)
 
-        cy.assertModalIsNotVisible()
+        cy.assertModalDoesNotExist()
 
     })
 
@@ -145,7 +145,7 @@ describe('fill and test form submission styles', () => {
 
         cy.assertShouldHaveGreenColor(greenColorElements)
 
-        cy.assertModalIsNotVisible()
+        cy.assertModalDoesNotExist()
 
     })
 
@@ -163,7 +163,7 @@ describe('fill and test form submission styles', () => {
 
         cy.assertShouldHaveGreenColor(greenColorElements)
 
-        cy.assertModalIsNotVisible()
+        cy.assertModalDoesNotExist()
 
     })
 
@@ -183,7 +183,7 @@ describe('fill and test form submission styles', () => {
         cy.assertShouldHaveRedColor(redColorElements)
         cy.assertShouldHaveGreenColor(greenColorElements)
 
-        cy.assertModalIsNotVisible()
+        cy.assertModalDoesNotExist()
 
     })
 
@@ -203,7 +203,7 @@ describe('fill and test form submission styles', () => {
         cy.assertShouldHaveRedColor(redColorElements)
         cy.assertShouldHaveGreenColor(greenColorElements)
 
-        cy.assertModalIsNotVisible()
+        cy.assertModalDoesNotExist()
 
     })
 
@@ -223,7 +223,7 @@ describe('fill and test form submission styles', () => {
         cy.assertShouldHaveRedColor(redColorElements)
         cy.assertShouldHaveGreenColor(greenColorElements)
 
-        cy.assertModalIsNotVisible()
+        cy.assertModalDoesNotExist()
 
     })
 
@@ -244,7 +244,7 @@ describe('fill and test form submission styles', () => {
         cy.assertShouldHaveRedColor(redColorElements)
         cy.assertShouldHaveGreenColor(greenColorElements)
 
-        cy.assertModalIsNotVisible()
+        cy.assertModalDoesNotExist()
 
     })
 
@@ -264,7 +264,7 @@ describe('fill and test form submission styles', () => {
         cy.assertShouldHaveRedColor(redColorElements)
         cy.assertShouldHaveGreenColor(greenColorElements)
 
-        cy.assertModalIsNotVisible()
+        cy.assertModalDoesNotExist()
 
     })
 
@@ -284,7 +284,7 @@ describe('fill and test form submission styles', () => {
         cy.assertShouldHaveRedColor(redColorElements)
         cy.assertShouldHaveGreenColor(greenColorElements)
 
-        cy.assertModalIsNotVisible()
+        cy.assertModalDoesNotExist()
 
     })
 
@@ -304,7 +304,7 @@ describe('fill and test form submission styles', () => {
         cy.assertShouldHaveRedColor(redColorElements)
         cy.assertShouldHaveGreenColor(greenColorElements)
 
-        cy.assertModalIsNotVisible()
+        cy.assertModalDoesNotExist()
 
     })
 

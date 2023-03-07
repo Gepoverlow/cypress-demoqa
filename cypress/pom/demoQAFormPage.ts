@@ -22,7 +22,7 @@ class DemoQAFormPage {
 
     selectors = {
         // Form Input Selectors:
-        firstNameInput: () => { cy.get('#firstName') },
+        firstNameInput: () => cy.get('#firstName'),
         lastNameInput: () => cy.get('#lastName'),
         emailInput: () => cy.get('#userEmail'),
         maleGenderRadio: () => cy.get('#gender-radio-1'),

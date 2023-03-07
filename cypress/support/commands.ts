@@ -34,7 +34,7 @@ Cypress.Commands.add('assertShouldHaveGreenColor', (arrayOfSelectors: string[]) 
 
 })
 
-Cypress.Commands.add('assertModalIsNotVisible', () => {
+Cypress.Commands.add('assertModalDoesNotExist', () => {
 
     Form.selectors.modal().should('not.exist')
 
