@@ -1,6 +1,10 @@
+import Form from '../pom/demoQAFormPage'
+
 describe('fill and test form submission styles', () => {
 
+
     beforeEach('visit the website before every test', () => {
+
         cy.visit('/')
         cy.on('uncaught:exception', (err, runnable) => {
             return false
@@ -10,12 +14,12 @@ describe('fill and test form submission styles', () => {
 
     it('empty form should have invalid form input styles', () => {
 
-        const redBorderElements: Array<string> = ['#firstName', '#lastName', '#userNumber']
-        const greenBorderElements: Array<string> = ['#userEmail', '#dateOfBirthInput', '#currentAddress']
-        const redColorElements: Array<string> = ['#gender-radio-1', '#gender-radio-2', '#gender-radio-3']
-        const greenColorElements: Array<string> = ['#hobbies-checkbox-1', '#hobbies-checkbox-2', '#hobbies-checkbox-3']
+        const redBorderElements: string[] = [Form.ids.firstName, Form.ids.lastName, Form.ids.phoneNumber]
+        const greenBorderElements: string[] = [Form.ids.email, Form.ids.dob, Form.ids.address]
+        const redColorElements: string[] = [Form.ids.maleGender, Form.ids.femaleGender, Form.ids.otherGender]
+        const greenColorElements: string[] = [Form.ids.sportsHobby, Form.ids.readingHobby, Form.ids.musicHobby]
 
-        cy.get('#submit').click({ force: true })
+        Form.submitForm()
 
         cy.assertShouldHaveRedBorderColor(redBorderElements)
         cy.assertShouldHaveGreenBorderColor(greenBorderElements)
@@ -23,20 +27,19 @@ describe('fill and test form submission styles', () => {
         cy.assertShouldHaveRedColor(redColorElements)
         cy.assertShouldHaveGreenColor(greenColorElements)
 
-        cy.get('#example-modal-sizes-title-lg').should('not.exist')
+        cy.assertModalIsNotVisible()
 
     })
 
     it('only valid first name input should have other invalid input styles', () => {
 
-        const redBorderElements: Array<string> = ['#lastName', '#userNumber']
-        const greenBorderElements: Array<string> = ['#firstName', '#userEmail', '#dateOfBirthInput', '#currentAddress']
-        const redColorElements: Array<string> = ['#gender-radio-1', '#gender-radio-2', '#gender-radio-3']
-        const greenColorElements: Array<string> = ['#hobbies-checkbox-1', '#hobbies-checkbox-2', '#hobbies-checkbox-3']
+        const redBorderElements: string[] = [Form.ids.lastName, Form.ids.phoneNumber]
+        const greenBorderElements: string[] = [Form.ids.email, Form.ids.dob, Form.ids.address, Form.ids.firstName]
+        const redColorElements: string[] = [Form.ids.maleGender, Form.ids.femaleGender, Form.ids.otherGender]
+        const greenColorElements: string[] = [Form.ids.sportsHobby, Form.ids.readingHobby, Form.ids.musicHobby]
 
-        cy.get('#firstName').type('John')
-
-        cy.get('#submit').click({ force: true })
+        Form.typeFirstName('John')
+        Form.submitForm()
 
         cy.assertShouldHaveRedBorderColor(redBorderElements)
         cy.assertShouldHaveGreenBorderColor(greenBorderElements)
@@ -44,20 +47,19 @@ describe('fill and test form submission styles', () => {
         cy.assertShouldHaveRedColor(redColorElements)
         cy.assertShouldHaveGreenColor(greenColorElements)
 
-        cy.get('#example-modal-sizes-title-lg').should('not.exist')
+        cy.assertModalIsNotVisible()
 
     })
 
     it('only valid last name input should have other invalid input styles', () => {
 
-        const redBorderElements: Array<string> = ['#firstName', '#userNumber']
-        const greenBorderElements: Array<string> = ['#lastName', '#userEmail', '#dateOfBirthInput', '#currentAddress']
-        const redColorElements: Array<string> = ['#gender-radio-1', '#gender-radio-2', '#gender-radio-3']
-        const greenColorElements: Array<string> = ['#hobbies-checkbox-1', '#hobbies-checkbox-2', '#hobbies-checkbox-3']
+        const redBorderElements: string[] = [Form.ids.firstName, Form.ids.phoneNumber]
+        const greenBorderElements: string[] = [Form.ids.email, Form.ids.dob, Form.ids.address, Form.ids.lastName]
+        const redColorElements: string[] = [Form.ids.maleGender, Form.ids.femaleGender, Form.ids.otherGender]
+        const greenColorElements: string[] = [Form.ids.sportsHobby, Form.ids.readingHobby, Form.ids.musicHobby]
 
-        cy.get('#lastName').type('Doe')
-
-        cy.get('#submit').click({ force: true })
+        Form.typeLastName('Doe')
+        Form.submitForm()
 
         cy.assertShouldHaveRedBorderColor(redBorderElements)
         cy.assertShouldHaveGreenBorderColor(greenBorderElements)
@@ -65,20 +67,21 @@ describe('fill and test form submission styles', () => {
         cy.assertShouldHaveRedColor(redColorElements)
         cy.assertShouldHaveGreenColor(greenColorElements)
 
-        cy.get('#example-modal-sizes-title-lg').should('not.exist')
+        cy.assertModalIsNotVisible()
+
+
 
     })
 
     it('only valid user email input should have other invalid input styles', () => {
 
-        const redBorderElements: Array<string> = ['#firstName', '#lastName', '#userNumber']
-        const greenBorderElements: Array<string> = ['#userEmail', '#dateOfBirthInput', '#currentAddress']
-        const redColorElements: Array<string> = ['#gender-radio-1', '#gender-radio-2', '#gender-radio-3']
-        const greenColorElements: Array<string> = ['#hobbies-checkbox-1', '#hobbies-checkbox-2', '#hobbies-checkbox-3']
+        const redBorderElements: string[] = [Form.ids.firstName, Form.ids.lastName, Form.ids.phoneNumber]
+        const greenBorderElements: string[] = [Form.ids.email, Form.ids.dob, Form.ids.address]
+        const redColorElements: string[] = [Form.ids.maleGender, Form.ids.femaleGender, Form.ids.otherGender]
+        const greenColorElements: string[] = [Form.ids.sportsHobby, Form.ids.readingHobby, Form.ids.musicHobby]
 
-        cy.get('#userEmail').type('johndoe@gmail.com')
-
-        cy.get('#submit').click({ force: true })
+        Form.typeEmail('johndoe@gmail.com')
+        Form.submitForm()
 
         cy.assertShouldHaveRedBorderColor(redBorderElements)
         cy.assertShouldHaveGreenBorderColor(greenBorderElements)
@@ -86,20 +89,19 @@ describe('fill and test form submission styles', () => {
         cy.assertShouldHaveRedColor(redColorElements)
         cy.assertShouldHaveGreenColor(greenColorElements)
 
-        cy.get('#example-modal-sizes-title-lg').should('not.exist')
+        cy.assertModalIsNotVisible()
 
     })
 
     it('only invalid user email input should have other invalid input styles', () => {
 
-        const redBorderElements: Array<string> = ['#firstName', '#lastName', '#userNumber', '#userEmail']
-        const greenBorderElements: Array<string> = ['#dateOfBirthInput', '#currentAddress']
-        const redColorElements: Array<string> = ['#gender-radio-1', '#gender-radio-2', '#gender-radio-3']
-        const greenColorElements: Array<string> = ['#hobbies-checkbox-1', '#hobbies-checkbox-2', '#hobbies-checkbox-3']
+        const redBorderElements: string[] = [Form.ids.firstName, Form.ids.lastName, Form.ids.phoneNumber, Form.ids.email]
+        const greenBorderElements: string[] = [Form.ids.dob, Form.ids.address]
+        const redColorElements: string[] = [Form.ids.maleGender, Form.ids.femaleGender, Form.ids.otherGender]
+        const greenColorElements: string[] = [Form.ids.sportsHobby, Form.ids.readingHobby, Form.ids.musicHobby]
 
-        cy.get('#userEmail').type('notavalidemail')
-
-        cy.get('#submit').click({ force: true })
+        Form.typeEmail('notavalidmail@co')
+        Form.submitForm()
 
         cy.assertShouldHaveRedBorderColor(redBorderElements)
         cy.assertShouldHaveGreenBorderColor(greenBorderElements)
@@ -107,77 +109,73 @@ describe('fill and test form submission styles', () => {
         cy.assertShouldHaveRedColor(redColorElements)
         cy.assertShouldHaveGreenColor(greenColorElements)
 
-        cy.get('#example-modal-sizes-title-lg').should('not.exist')
+        cy.assertModalIsNotVisible()
 
     })
 
     it('only valid male gender input should have other invalid input styles', () => {
 
-        const redBorderElements: Array<string> = ['#firstName', '#lastName', '#userNumber']
-        const greenBorderElements: Array<string> = ['#userEmail', '#dateOfBirthInput', '#currentAddress']
-        const greenColorElements: Array<string> = ['#hobbies-checkbox-1', '#hobbies-checkbox-2', '#hobbies-checkbox-3', '#gender-radio-1', '#gender-radio-2', '#gender-radio-3']
+        const redBorderElements: string[] = [Form.ids.firstName, Form.ids.lastName, Form.ids.phoneNumber]
+        const greenBorderElements: string[] = [Form.ids.email, Form.ids.dob, Form.ids.address]
+        const greenColorElements: string[] = [Form.ids.sportsHobby, Form.ids.readingHobby, Form.ids.musicHobby, Form.ids.maleGender, Form.ids.femaleGender, Form.ids.otherGender]
 
-        cy.get('#gender-radio-1').click({ force: true })
-
-        cy.get('#submit').click({ force: true })
+        Form.selectGender(1)
+        Form.submitForm()
 
         cy.assertShouldHaveRedBorderColor(redBorderElements)
         cy.assertShouldHaveGreenBorderColor(greenBorderElements)
 
         cy.assertShouldHaveGreenColor(greenColorElements)
 
-        cy.get('#example-modal-sizes-title-lg').should('not.exist')
+        cy.assertModalIsNotVisible()
 
     })
 
     it('only valid female gender input should have other invalid input styles', () => {
 
-        const redBorderElements: Array<string> = ['#firstName', '#lastName', '#userNumber']
-        const greenBorderElements: Array<string> = ['#userEmail', '#dateOfBirthInput', '#currentAddress']
-        const greenColorElements: Array<string> = ['#hobbies-checkbox-1', '#hobbies-checkbox-2', '#hobbies-checkbox-3', '#gender-radio-1', '#gender-radio-2', '#gender-radio-3']
+        const redBorderElements: string[] = [Form.ids.firstName, Form.ids.lastName, Form.ids.phoneNumber]
+        const greenBorderElements: string[] = [Form.ids.email, Form.ids.dob, Form.ids.address]
+        const greenColorElements: string[] = [Form.ids.sportsHobby, Form.ids.readingHobby, Form.ids.musicHobby, Form.ids.maleGender, Form.ids.femaleGender, Form.ids.otherGender]
 
-        cy.get('#gender-radio-2').click({ force: true })
-
-        cy.get('#submit').click({ force: true })
+        Form.selectGender(2)
+        Form.submitForm()
 
         cy.assertShouldHaveRedBorderColor(redBorderElements)
         cy.assertShouldHaveGreenBorderColor(greenBorderElements)
 
         cy.assertShouldHaveGreenColor(greenColorElements)
 
-        cy.get('#example-modal-sizes-title-lg').should('not.exist')
+        cy.assertModalIsNotVisible()
 
     })
 
     it('only valid other gender input should have other invalid input styles', () => {
 
-        const redBorderElements: Array<string> = ['#firstName', '#lastName', '#userNumber']
-        const greenBorderElements: Array<string> = ['#userEmail', '#dateOfBirthInput', '#currentAddress']
-        const greenColorElements: Array<string> = ['#hobbies-checkbox-1', '#hobbies-checkbox-2', '#hobbies-checkbox-3', '#gender-radio-1', '#gender-radio-2', '#gender-radio-3']
+        const redBorderElements: string[] = [Form.ids.firstName, Form.ids.lastName, Form.ids.phoneNumber]
+        const greenBorderElements: string[] = [Form.ids.email, Form.ids.dob, Form.ids.address]
+        const greenColorElements: string[] = [Form.ids.sportsHobby, Form.ids.readingHobby, Form.ids.musicHobby, Form.ids.maleGender, Form.ids.femaleGender, Form.ids.otherGender]
 
-        cy.get('#gender-radio-3').click({ force: true })
-
-        cy.get('#submit').click({ force: true })
+        Form.selectGender(3)
+        Form.submitForm()
 
         cy.assertShouldHaveRedBorderColor(redBorderElements)
         cy.assertShouldHaveGreenBorderColor(greenBorderElements)
 
         cy.assertShouldHaveGreenColor(greenColorElements)
 
-        cy.get('#example-modal-sizes-title-lg').should('not.exist')
+        cy.assertModalIsNotVisible()
 
     })
 
     it('only valid mobile number input should have other invalid input styles', () => {
 
-        const redBorderElements: Array<string> = ['#firstName', '#lastName']
-        const greenBorderElements: Array<string> = ['#userEmail', '#dateOfBirthInput', '#currentAddress', '#userNumber']
-        const redColorElements: Array<string> = ['#gender-radio-1', '#gender-radio-2', '#gender-radio-3']
-        const greenColorElements: Array<string> = ['#hobbies-checkbox-1', '#hobbies-checkbox-2', '#hobbies-checkbox-3']
+        const redBorderElements: string[] = [Form.ids.firstName, Form.ids.lastName]
+        const greenBorderElements: string[] = [Form.ids.email, Form.ids.dob, Form.ids.address, Form.ids.phoneNumber]
+        const redColorElements: string[] = [Form.ids.maleGender, Form.ids.femaleGender, Form.ids.otherGender]
+        const greenColorElements: string[] = [Form.ids.sportsHobby, Form.ids.readingHobby, Form.ids.musicHobby]
 
-        cy.get('#userNumber').type('1212121212')
-
-        cy.get('#submit').click({ force: true })
+        Form.typePhoneNr('1231231231')
+        Form.submitForm()
 
         cy.assertShouldHaveRedBorderColor(redBorderElements)
         cy.assertShouldHaveGreenBorderColor(greenBorderElements)
@@ -185,20 +183,19 @@ describe('fill and test form submission styles', () => {
         cy.assertShouldHaveRedColor(redColorElements)
         cy.assertShouldHaveGreenColor(greenColorElements)
 
-        cy.get('#example-modal-sizes-title-lg').should('not.exist')
+        cy.assertModalIsNotVisible()
 
     })
 
     it('only invalid mobile number input should have other invalid input styles', () => {
 
-        const redBorderElements: Array<string> = ['#firstName', '#lastName', '#userNumber']
-        const greenBorderElements: Array<string> = ['#userEmail', '#dateOfBirthInput', '#currentAddress']
-        const redColorElements: Array<string> = ['#gender-radio-1', '#gender-radio-2', '#gender-radio-3']
-        const greenColorElements: Array<string> = ['#hobbies-checkbox-1', '#hobbies-checkbox-2', '#hobbies-checkbox-3']
+        const redBorderElements: string[] = [Form.ids.firstName, Form.ids.lastName, Form.ids.phoneNumber]
+        const greenBorderElements: string[] = [Form.ids.email, Form.ids.dob, Form.ids.address]
+        const redColorElements: string[] = [Form.ids.maleGender, Form.ids.femaleGender, Form.ids.otherGender]
+        const greenColorElements: string[] = [Form.ids.sportsHobby, Form.ids.readingHobby, Form.ids.musicHobby]
 
-        cy.get('#userNumber').type('notavalidnumber')
-
-        cy.get('#submit').click({ force: true })
+        Form.typePhoneNr('not a valid nr')
+        Form.submitForm()
 
         cy.assertShouldHaveRedBorderColor(redBorderElements)
         cy.assertShouldHaveGreenBorderColor(greenBorderElements)
@@ -206,20 +203,19 @@ describe('fill and test form submission styles', () => {
         cy.assertShouldHaveRedColor(redColorElements)
         cy.assertShouldHaveGreenColor(greenColorElements)
 
-        cy.get('#example-modal-sizes-title-lg').should('not.exist')
+        cy.assertModalIsNotVisible()
 
     })
 
     it('only valid date of birth input should have other invalid input styles', () => {
 
-        const redBorderElements: Array<string> = ['#firstName', '#lastName', '#userNumber']
-        const greenBorderElements: Array<string> = ['#userEmail', '#dateOfBirthInput', '#currentAddress']
-        const redColorElements: Array<string> = ['#gender-radio-1', '#gender-radio-2', '#gender-radio-3']
-        const greenColorElements: Array<string> = ['#hobbies-checkbox-1', '#hobbies-checkbox-2', '#hobbies-checkbox-3']
+        const redBorderElements: string[] = [Form.ids.firstName, Form.ids.lastName, Form.ids.phoneNumber]
+        const greenBorderElements: string[] = [Form.ids.email, Form.ids.dob, Form.ids.address]
+        const redColorElements: string[] = [Form.ids.maleGender, Form.ids.femaleGender, Form.ids.otherGender]
+        const greenColorElements: string[] = [Form.ids.sportsHobby, Form.ids.readingHobby, Form.ids.musicHobby]
 
-        cy.get('#dateOfBirthInput').type('{selectall}12 12 2012{enter}')
-
-        cy.get('#submit').click({ force: true })
+        Form.typeDob('{selectall}12 12 2012{enter}')
+        Form.submitForm()
 
         cy.assertShouldHaveRedBorderColor(redBorderElements)
         cy.assertShouldHaveGreenBorderColor(greenBorderElements)
@@ -227,21 +223,20 @@ describe('fill and test form submission styles', () => {
         cy.assertShouldHaveRedColor(redColorElements)
         cy.assertShouldHaveGreenColor(greenColorElements)
 
-        cy.get('#example-modal-sizes-title-lg').should('not.exist')
+        cy.assertModalIsNotVisible()
 
     })
 
 
     it('only valid sport hobby input should have other invalid input styles', () => {
 
-        const redBorderElements: Array<string> = ['#firstName', '#lastName', '#userNumber']
-        const greenBorderElements: Array<string> = ['#userEmail', '#dateOfBirthInput', '#currentAddress']
-        const redColorElements: Array<string> = ['#gender-radio-1', '#gender-radio-2', '#gender-radio-3']
-        const greenColorElements: Array<string> = ['#hobbies-checkbox-1', '#hobbies-checkbox-2', '#hobbies-checkbox-3']
+        const redBorderElements: string[] = [Form.ids.firstName, Form.ids.lastName, Form.ids.phoneNumber]
+        const greenBorderElements: string[] = [Form.ids.email, Form.ids.dob, Form.ids.address]
+        const redColorElements: string[] = [Form.ids.maleGender, Form.ids.femaleGender, Form.ids.otherGender]
+        const greenColorElements: string[] = [Form.ids.sportsHobby, Form.ids.readingHobby, Form.ids.musicHobby]
 
-        cy.get('#hobbies-checkbox-1').click({ force: true })
-
-        cy.get('#submit').click({ force: true })
+        Form.selectHobbie(1)
+        Form.submitForm()
 
         cy.assertShouldHaveRedBorderColor(redBorderElements)
         cy.assertShouldHaveGreenBorderColor(greenBorderElements)
@@ -249,20 +244,19 @@ describe('fill and test form submission styles', () => {
         cy.assertShouldHaveRedColor(redColorElements)
         cy.assertShouldHaveGreenColor(greenColorElements)
 
-        cy.get('#example-modal-sizes-title-lg').should('not.exist')
+        cy.assertModalIsNotVisible()
 
     })
 
     it('only valid reading hobby input should have other invalid input styles', () => {
 
-        const redBorderElements: Array<string> = ['#firstName', '#lastName', '#userNumber']
-        const greenBorderElements: Array<string> = ['#userEmail', '#dateOfBirthInput', '#currentAddress']
-        const redColorElements: Array<string> = ['#gender-radio-1', '#gender-radio-2', '#gender-radio-3']
-        const greenColorElements: Array<string> = ['#hobbies-checkbox-1', '#hobbies-checkbox-2', '#hobbies-checkbox-3']
+        const redBorderElements: string[] = [Form.ids.firstName, Form.ids.lastName, Form.ids.phoneNumber]
+        const greenBorderElements: string[] = [Form.ids.email, Form.ids.dob, Form.ids.address]
+        const redColorElements: string[] = [Form.ids.maleGender, Form.ids.femaleGender, Form.ids.otherGender]
+        const greenColorElements: string[] = [Form.ids.sportsHobby, Form.ids.readingHobby, Form.ids.musicHobby]
 
-        cy.get('#hobbies-checkbox-2').click({ force: true })
-
-        cy.get('#submit').click({ force: true })
+        Form.selectHobbie(2)
+        Form.submitForm()
 
         cy.assertShouldHaveRedBorderColor(redBorderElements)
         cy.assertShouldHaveGreenBorderColor(greenBorderElements)
@@ -270,20 +264,19 @@ describe('fill and test form submission styles', () => {
         cy.assertShouldHaveRedColor(redColorElements)
         cy.assertShouldHaveGreenColor(greenColorElements)
 
-        cy.get('#example-modal-sizes-title-lg').should('not.exist')
+        cy.assertModalIsNotVisible()
 
     })
 
     it('only valid music hobby input should have other invalid input styles', () => {
 
-        const redBorderElements: Array<string> = ['#firstName', '#lastName', '#userNumber']
-        const greenBorderElements: Array<string> = ['#userEmail', '#dateOfBirthInput', '#currentAddress']
-        const redColorElements: Array<string> = ['#gender-radio-1', '#gender-radio-2', '#gender-radio-3']
-        const greenColorElements: Array<string> = ['#hobbies-checkbox-1', '#hobbies-checkbox-2', '#hobbies-checkbox-3']
+        const redBorderElements: string[] = [Form.ids.firstName, Form.ids.lastName, Form.ids.phoneNumber]
+        const greenBorderElements: string[] = [Form.ids.email, Form.ids.dob, Form.ids.address]
+        const redColorElements: string[] = [Form.ids.maleGender, Form.ids.femaleGender, Form.ids.otherGender]
+        const greenColorElements: string[] = [Form.ids.sportsHobby, Form.ids.readingHobby, Form.ids.musicHobby]
 
-        cy.get('#hobbies-checkbox-3').click({ force: true })
-
-        cy.get('#submit').click({ force: true })
+        Form.selectHobbie(3)
+        Form.submitForm()
 
         cy.assertShouldHaveRedBorderColor(redBorderElements)
         cy.assertShouldHaveGreenBorderColor(greenBorderElements)
@@ -291,20 +284,19 @@ describe('fill and test form submission styles', () => {
         cy.assertShouldHaveRedColor(redColorElements)
         cy.assertShouldHaveGreenColor(greenColorElements)
 
-        cy.get('#example-modal-sizes-title-lg').should('not.exist')
+        cy.assertModalIsNotVisible()
 
     })
 
     it('only valid music hobby input should have other invalid input styles', () => {
 
-        const redBorderElements: Array<string> = ['#firstName', '#lastName', '#userNumber']
-        const greenBorderElements: Array<string> = ['#userEmail', '#dateOfBirthInput', '#currentAddress']
-        const redColorElements: Array<string> = ['#gender-radio-1', '#gender-radio-2', '#gender-radio-3']
-        const greenColorElements: Array<string> = ['#hobbies-checkbox-1', '#hobbies-checkbox-2', '#hobbies-checkbox-3']
+        const redBorderElements: string[] = [Form.ids.firstName, Form.ids.lastName, Form.ids.phoneNumber]
+        const greenBorderElements: string[] = [Form.ids.email, Form.ids.dob, Form.ids.address]
+        const redColorElements: string[] = [Form.ids.maleGender, Form.ids.femaleGender, Form.ids.otherGender]
+        const greenColorElements: string[] = [Form.ids.sportsHobby, Form.ids.readingHobby, Form.ids.musicHobby]
 
-        cy.get('#currentAddress').type('John Does real address 12 89th floor')
-
-        cy.get('#submit').click({ force: true })
+        Form.typeCurrentAddress('John Does real address 12 89th floor')
+        Form.submitForm()
 
         cy.assertShouldHaveRedBorderColor(redBorderElements)
         cy.assertShouldHaveGreenBorderColor(greenBorderElements)
@@ -312,7 +304,7 @@ describe('fill and test form submission styles', () => {
         cy.assertShouldHaveRedColor(redColorElements)
         cy.assertShouldHaveGreenColor(greenColorElements)
 
-        cy.get('#example-modal-sizes-title-lg').should('not.exist')
+        cy.assertModalIsNotVisible()
 
     })
 

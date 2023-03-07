@@ -1,10 +1,12 @@
 
 declare namespace Cypress {
     interface Chainable<Subject = any> {
-        assertShouldHaveRedBorderColor(arrayOfSelectors: Array<string>): Chainable<any>;
-        assertShouldHaveGreenBorderColor(arrayOfSelectors: Array<string>): Chainable<any>;
-        assertShouldHaveRedColor(arrayOfSelectors: Array<string>): Chainable<any>;
-        assertShouldHaveGreenColor(arrayOfSelectors: Array<string>): Chainable<any>;
+        assertShouldHaveRedBorderColor(arrayOfSelectors: string[]): Chainable<any>;
+        assertShouldHaveGreenBorderColor(arrayOfSelectors: string[]): Chainable<any>;
+        assertShouldHaveRedColor(arrayOfSelectors: string[]): Chainable<any>;
+        assertShouldHaveGreenColor(arrayOfSelectors: string[]): Chainable<any>;
+        assertModalIsNotVisible(): Chainable<any>;
+        assertElementsAreVisibleAndContentMatches(elementsToAssert: { selector: Cypress.Chainable<JQuery<HTMLElement>>; expected: string; }[]): Chainable<any>;
 
     }
 }
