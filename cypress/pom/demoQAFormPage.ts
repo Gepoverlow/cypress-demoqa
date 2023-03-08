@@ -17,45 +17,62 @@ class DemoQAFormPage {
         picture: '#uploadPicture',
         address: '#currentAddress',
         city: '#react-select-3-input',
-        state: '#react-select-4-input'
+        state: '#react-select-4-input',
+
+        //Raw functionality ids
+        submit: '#submit',
+
+        //Raw modal ids
+        modal: '.modal-content',
+        titleM: '#example-modal-sizes-title-lg',
+        fullNameM: 'tbody > :nth-child(1) > :nth-child(2)',
+        emailM: 'tbody > :nth-child(2) > :nth-child(2)',
+        genderM: 'tbody > :nth-child(3) > :nth-child(2)',
+        phoneM: 'tbody > :nth-child(4) > :nth-child(2)',
+        dobM: 'tbody > :nth-child(5) > :nth-child(2)',
+        subjectsM: 'tbody > :nth-child(6) > :nth-child(2)',
+        hobbiesM: 'tbody > :nth-child(7) > :nth-child(2)',
+        pictureM: 'tbody > :nth-child(8) > :nth-child(2)',
+        addressM: 'tbody > :nth-child(9) > :nth-child(2)',
+        stateAndCityM: 'tbody > :nth-child(10) > :nth-child(2)'
 
     }
 
     selectors = {
         // Form Input Selectors:
-        firstNameInput: () => cy.get('#firstName'),
-        lastNameInput: () => cy.get('#lastName'),
-        emailInput: () => cy.get('#userEmail'),
-        maleGenderRadio: () => cy.get('#gender-radio-1'),
-        femaleGenderRadio: () => cy.get('#gender-radio-2'),
-        otherGenderRadio: () => cy.get('#gender-radio-3'),
-        phoneNumberInput: () => cy.get('#userNumber'),
-        dobInput: () => cy.get('#dateOfBirthInput'),
-        subjectsInput: () => cy.get('#subjectsInput'),
-        sportsHobbiesCheckbox: () => cy.get('#hobbies-checkbox-1'),
-        readingHobbiesCheckbox: () => cy.get('#hobbies-checkbox-2'),
-        musicHobbiesCheckbox: () => cy.get('#hobbies-checkbox-3'),
-        pictureInput: () => cy.get('#uploadPicture'),
-        currentAddressInput: () => cy.get('#currentAddress'),
-        cityInput: () => cy.get('#react-select-3-input'),
-        stateInput: () => cy.get('#react-select-4-input'),
+        firstNameInput: () => cy.get(this.ids.firstName),
+        lastNameInput: () => cy.get(this.ids.lastName),
+        emailInput: () => cy.get(this.ids.email),
+        maleGenderRadio: () => cy.get(this.ids.maleGender),
+        femaleGenderRadio: () => cy.get(this.ids.femaleGender),
+        otherGenderRadio: () => cy.get(this.ids.otherGender),
+        phoneNumberInput: () => cy.get(this.ids.phoneNumber),
+        dobInput: () => cy.get(this.ids.dob),
+        subjectsInput: () => cy.get(this.ids.subjects),
+        sportsHobbiesCheckbox: () => cy.get(this.ids.sportsHobby),
+        readingHobbiesCheckbox: () => cy.get(this.ids.readingHobby),
+        musicHobbiesCheckbox: () => cy.get(this.ids.musicHobby),
+        pictureInput: () => cy.get(this.ids.picture),
+        currentAddressInput: () => cy.get(this.ids.address),
+        cityInput: () => cy.get(this.ids.city),
+        stateInput: () => cy.get(this.ids.state),
 
         // Funcionality Selectors:
-        submitBtn: () => cy.get('#submit'),
+        submitBtn: () => cy.get(this.ids.submit),
 
         //Success Modal Selectors:
-        modal: () => cy.get('.modal-content'),
-        titleModal: () => cy.get('#example-modal-sizes-title-lg'),
-        fullNameModal: () => cy.get('tbody > :nth-child(1) > :nth-child(2)'),
-        emailModal: () => cy.get('tbody > :nth-child(2) > :nth-child(2)'),
-        genderModal: () => cy.get('tbody > :nth-child(3) > :nth-child(2)'),
-        phoneNrModal: () => cy.get('tbody > :nth-child(4) > :nth-child(2)'),
-        dobModal: () => cy.get('tbody > :nth-child(5) > :nth-child(2)'),
-        subjectsModal: () => cy.get('tbody > :nth-child(6) > :nth-child(2)'),
-        hobbiesModal: () => cy.get('tbody > :nth-child(7) > :nth-child(2)'),
-        pictureModal: () => cy.get('tbody > :nth-child(8) > :nth-child(2)'),
-        addressModal: () => cy.get('tbody > :nth-child(9) > :nth-child(2)'),
-        stateAndCityModal: () => cy.get('tbody > :nth-child(10) > :nth-child(2)')
+        modal: () => cy.get(this.ids.modal),
+        titleModal: () => cy.get(this.ids.titleM),
+        fullNameModal: () => cy.get(this.ids.fullNameM),
+        emailModal: () => cy.get(this.ids.emailM),
+        genderModal: () => cy.get(this.ids.genderM),
+        phoneNrModal: () => cy.get(this.ids.phoneM),
+        dobModal: () => cy.get(this.ids.dobM),
+        subjectsModal: () => cy.get(this.ids.subjectsM),
+        hobbiesModal: () => cy.get(this.ids.hobbiesM),
+        pictureModal: () => cy.get(this.ids.pictureM),
+        addressModal: () => cy.get(this.ids.addressM),
+        stateAndCityModal: () => cy.get(this.ids.stateAndCityM)
 
     }
 
