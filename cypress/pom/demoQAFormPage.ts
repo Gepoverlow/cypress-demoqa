@@ -1,6 +1,7 @@
 class DemoQAFormPage {
 
     ids = {
+        // Raw input ids
         firstName: '#firstName',
         lastName: '#lastName',
         email: '#userEmail',
@@ -87,11 +88,13 @@ class DemoQAFormPage {
     }
 
     typeCityAndState(city: string, state: string) {
+        // We force through these clicks because there is another placeholder element on top of the inputs that blocks the action
         this.selectors.cityInput().click({ force: true }).type(city)
         this.selectors.stateInput().click({ force: true }).type(state)
     }
 
     selectGender(selection: number) {
+        // We force through these clicks because there is a label element on top of the radio input that blocks the action
         if (selection === 1) {
             this.selectors.maleGenderRadio().click({ force: true })
         }
@@ -104,6 +107,7 @@ class DemoQAFormPage {
     }
 
     selectHobbie(selection: number) {
+        // We force through these clicks because there is a label element on top of the checkbox input that blocks the action
         if (selection === 1) {
             this.selectors.sportsHobbiesCheckbox().click({ force: true })
         }
@@ -120,6 +124,7 @@ class DemoQAFormPage {
     }
 
     submitForm() {
+        //We force through this click because the center of this element is hidden from view
         return this.selectors.submitBtn().click({ force: true })
     }
 

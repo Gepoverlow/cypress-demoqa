@@ -3,16 +3,13 @@ import Form from '../pom/demoQAFormPage'
 describe('fill and test form submission functionality', () => {
 
     beforeEach('visit the website before every test', () => {
-
         cy.visit('/')
         cy.on('uncaught:exception', (err, runnable) => {
             return false
         })
-
     })
 
     it('partly filled in valid form displays success modal and data is correct', () => {
-
         Form.typeFirstName('John')
         Form.typeLastName('Doe')
         Form.selectGender(1)
@@ -29,11 +26,9 @@ describe('fill and test form submission functionality', () => {
         ]
 
         cy.assertElementsAreVisibleAndContentMatches(elementsToAssertCorrect)
-
     })
 
     it('fully filled in valid form displays success modal and data is correct', () => {
-
         Form.typeFirstName('John')
         Form.typeLastName('Doe')
         Form.typeEmail('johndoe@gmail.com')
@@ -63,7 +58,6 @@ describe('fill and test form submission functionality', () => {
         ]
 
         cy.assertElementsAreVisibleAndContentMatches(elementsToAssertCorrect)
-
     })
 
 })
