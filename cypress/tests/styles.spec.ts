@@ -1,14 +1,17 @@
 import Form from '../pom/demoQAFormPage'
+import RawIds from '../pom/interfaces/rawIds'
+
+// This is required due to an internal script error that prevent cypress Cypress from properly running tests
+Cypress.on('uncaught:exception', (err, runnable) => {
+    return false
+})
 
 describe('fill and test form submission styles', () => {
 
-    const ids = Form.ids
+    const ids: RawIds = Form.ids
 
     beforeEach('visit the website before every test', () => {
         cy.visit('/')
-        cy.on('uncaught:exception', (err, runnable) => {
-            return false
-        })
     })
 
     it('empty form should have invalid form input styles', () => {
@@ -88,16 +91,20 @@ describe('fill and test form submission styles', () => {
         const redColorElements: string[] = [ids.maleGender, ids.femaleGender, ids.otherGender]
         const greenColorElements: string[] = [ids.sportsHobby, ids.readingHobby, ids.musicHobby]
 
-        Form.typeEmail('notavalidmail@co')
-        Form.submitForm()
+        cy.fixture('invalid_inputs').then((invalid_inputs) => {
+            invalid_inputs.email.forEach(function (invalid_email: string) {
+                Form.typeEmail(invalid_email)
+                Form.submitForm()
 
-        cy.assertShouldHaveRedBorderColor(redBorderElements)
-        cy.assertShouldHaveGreenBorderColor(greenBorderElements)
+                cy.assertShouldHaveRedBorderColor(redBorderElements)
+                cy.assertShouldHaveGreenBorderColor(greenBorderElements)
 
-        cy.assertShouldHaveRedColor(redColorElements)
-        cy.assertShouldHaveGreenColor(greenColorElements)
+                cy.assertShouldHaveRedColor(redColorElements)
+                cy.assertShouldHaveGreenColor(greenColorElements)
 
-        cy.assertModalDoesNotExist()
+                cy.assertModalDoesNotExist()
+            });
+        })
     })
 
     it('only valid male gender input should have other invalid input styles', () => {
@@ -172,16 +179,20 @@ describe('fill and test form submission styles', () => {
         const redColorElements: string[] = [ids.maleGender, ids.femaleGender, ids.otherGender]
         const greenColorElements: string[] = [ids.sportsHobby, ids.readingHobby, ids.musicHobby]
 
-        Form.typePhoneNr('not a valid nr')
-        Form.submitForm()
+        cy.fixture('invalid_inputs').then((invalid_inputs) => {
+            invalid_inputs.phoneNr.forEach(function (invalid_phoneNr: string) {
+                Form.typePhoneNr(invalid_phoneNr)
+                Form.submitForm()
 
-        cy.assertShouldHaveRedBorderColor(redBorderElements)
-        cy.assertShouldHaveGreenBorderColor(greenBorderElements)
+                cy.assertShouldHaveRedBorderColor(redBorderElements)
+                cy.assertShouldHaveGreenBorderColor(greenBorderElements)
 
-        cy.assertShouldHaveRedColor(redColorElements)
-        cy.assertShouldHaveGreenColor(greenColorElements)
+                cy.assertShouldHaveRedColor(redColorElements)
+                cy.assertShouldHaveGreenColor(greenColorElements)
 
-        cy.assertModalDoesNotExist()
+                cy.assertModalDoesNotExist()
+            });
+        })
     })
 
     it('only valid date of birth input should have other invalid input styles', () => {

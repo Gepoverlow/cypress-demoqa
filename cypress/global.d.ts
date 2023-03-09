@@ -7,6 +7,5 @@ declare namespace Cypress {
         assertShouldHaveGreenColor(arrayOfSelectors: string[]): Chainable<any>;
         assertModalDoesNotExist(): Chainable<any>;
         assertElementsAreVisibleAndContentMatches(elementsToAssert: { selector: Cypress.Chainable<JQuery<HTMLElement>>; expected: string; }[]): Chainable<any>;
-
     }
 }

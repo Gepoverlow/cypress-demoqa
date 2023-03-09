@@ -1,6 +1,9 @@
+import RawIds from "./interfaces/rawIds"
+import "cypress-real-events";
+
 class DemoQAFormPage {
 
-    ids = {
+    ids: RawIds = {
         // Raw input ids
         firstName: '#firstName',
         lastName: '#lastName',
@@ -76,41 +79,41 @@ class DemoQAFormPage {
 
     }
 
-    typeFirstName(text: string) {
+    typeFirstName(text: string): void {
         this.selectors.firstNameInput().type(text)
     }
 
-    typeLastName(text: string) {
+    typeLastName(text: string): void {
         this.selectors.lastNameInput().type(text)
     }
 
-    typeEmail(text: string) {
-        this.selectors.emailInput().type(text)
+    typeEmail(text: string): void {
+        this.selectors.emailInput().clear().type(text)
     }
 
-    typePhoneNr(text: string) {
-        this.selectors.phoneNumberInput().type(text)
+    typePhoneNr(text: string): void {
+        this.selectors.phoneNumberInput().clear().realType(text)
     }
 
-    typeDob(text: string) {
+    typeDob(text: string): void {
         this.selectors.dobInput().type(text)
     }
 
-    typeSubject(text: string) {
+    typeSubject(text: string): void {
         this.selectors.subjectsInput().type(text)
     }
 
-    typeCurrentAddress(text: string) {
+    typeCurrentAddress(text: string): void {
         this.selectors.currentAddressInput().type(text)
     }
 
-    typeCityAndState(city: string, state: string) {
+    typeCityAndState(city: string, state: string): void {
         // We force through these clicks because there is another placeholder element on top of the inputs that blocks the action
         this.selectors.cityInput().click({ force: true }).type(city)
         this.selectors.stateInput().click({ force: true }).type(state)
     }
 
-    selectGender(selection: number) {
+    selectGender(selection: number): void {
         // We force through these clicks because there is a label element on top of the radio input that blocks the action
         if (selection === 1) {
             this.selectors.maleGenderRadio().click({ force: true })
@@ -123,7 +126,7 @@ class DemoQAFormPage {
         }
     }
 
-    selectHobbie(selection: number) {
+    selectHobbie(selection: number): void {
         // We force through these clicks because there is a label element on top of the checkbox input that blocks the action
         if (selection === 1) {
             this.selectors.sportsHobbiesCheckbox().click({ force: true })
@@ -136,13 +139,13 @@ class DemoQAFormPage {
         }
     }
 
-    uploadPicture(path: string) {
+    uploadPicture(path: string): void {
         this.selectors.pictureInput().selectFile(path)
     }
 
-    submitForm() {
+    submitForm(): void {
         //We force through this click because the center of this element is hidden from view
-        return this.selectors.submitBtn().click({ force: true })
+        this.selectors.submitBtn().click({ force: true })
     }
 
 }

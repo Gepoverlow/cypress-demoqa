@@ -1,0 +1,4 @@
+{
+  "email": [" ", "&&&", "999", "notavalidemail", "notavalidemail@com", "notavalidemail@test"],
+  "phoneNr": [" ", "&&&", "notavalidnr", "123"]
+}
